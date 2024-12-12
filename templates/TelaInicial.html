@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/estiloTelaInicial.css" %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Tela Incial</title>
+    <style>
+        table {
+            text-align: center;
+            margin-left: 5%;
+            background-color: rgba(132, 0, 255, 0.5);
+            background-image: linear-gradient(to bottom, rgba(132, 0, 255, 0.5), rgba(255, 255, 255, 0.5));
+            margin: 20px;
+            padding: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        th,
+        td {
+            padding: 1.5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        th {
+            background-color: rgba(132, 0, 255, 0.7);
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>GAME STATION</h1>
+        
+        <div>
+            <a href="{% url "index" %}">
+                <figure>
+                    <img src="/static/img/JogoDaMemoria.png" alt="">
+                    <figcaption>Jogo Da Memória</figcaption>
+                </figure>
+            </a>
+            <table class="position-absolute top-50 start-0 translate-middle-y">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Tempo</th>
+                        <th>Tentativas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in itens %}
+                <tr>
+                    <td>{{ item.nome }}</td>
+                    <td>{{item.tempo}}</td>
+                    <td>{{item.jogadas}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+            
+    </main>
+    <footer>
+            <h4 class="fs-6 position-absolute bottom-0 start-50 translate-middle-x">
+            Integrantes:
+            Gabrielle da Rocha Xavier |
+            José Higo De Pontes Simplício |
+            Yasmim dos Santos Almeida <br>
+            Disciplina:
+            Programação para Internet <br>
+            Professor:
+            Marcelo Figueiredo Barbosa Júnior 
+            IFRN - Campus Santa Cruz/RN <br>
+            Todos os direitos reservados ⓒ  <br>
+            </h4>           
+    </footer>
+</body>
+</html>
