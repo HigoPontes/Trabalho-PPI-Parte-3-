@@ -8,8 +8,8 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', auth_views.LoginView.as_view(template_name='registro/login.html'), name='login'),
-    path('', usuario_login, name="login"),
+    path('', auth_views.LoginView.as_view(template_name='registro/login.html'), name='login'),
+    path('login/', usuario_login, name="login"),
     path('index/',index,name="index"),
     path('telaInicial/',TelaInicial,name="TelaInicial"),
     path('save',save,name='save'),

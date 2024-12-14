@@ -119,15 +119,15 @@
         clearInterval(timerInterval);
     };
     
-    // const tempoDeJogoInput = document.getElementById('tempoDeJogoInput');
-    // const tentativasInput = document.getElementById('tentativasInput');
+    const tempoDeJogoInput = document.getElementById('tempoDeJogoInput');
+    const tentativasInput = document.getElementById('tentativasInput');
     
-    // tempoDeJogoInput.value = tempoDeJogo;
-    // tentativasInput.value = tentativas;
+    {% comment %} tempoDeJogoInput.value = tempoDeJogo;
+    tentativasInput.value = tentativas; {% endcomment %}
     
     const atualizarInputs = () => {
-        {% comment %} tempoDeJogoInput.value = tempoDeJogo;
-        tentativasInput.value = tentativas; {% endcomment %}
+        tempoDeJogoInput.value = tempoDeJogo;
+        tentativasInput.value = tentativas;
     };
     
     // Chamar a função a cada segundo
@@ -136,14 +136,14 @@
      const fimDejogo = () => {
          const cartasDesativadas = document.getElementsByClassName('desativarCarta');
          if (cartasDesativadas.length == 20) {
-    //         document.querySelector(".mesa").remove();
-    //         document.querySelector(".Informacoes").remove();
-    //         document.querySelector(".apagar").remove();
-    //         document.querySelector("footer").remove();
-    //         document.querySelector("input[name='nome']").style.display = "block";
-    //         document.querySelector("input[type='submit']").style.display = "block";
-    //         document.getElementById("h1f").style.display = "block";
-    //         document.getElementById("h2f").style.display = "block";
+             document.querySelector(".mesa").remove();
+             document.querySelector(".Informacoes").remove();
+             document.querySelector(".apagar").remove();
+             document.querySelector("footer").remove();
+             document.querySelector("input[name='nome']").style.display = "block";
+             document.querySelector("input[type='submit']").style.display = "block";
+             document.getElementById("h1f").style.display = "block";
+             document.getElementById("h2f").style.display = "block";
                pararTimer();
          }
     }

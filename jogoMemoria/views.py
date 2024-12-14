@@ -17,11 +17,13 @@ def usuario_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            nome_usuario = user.get_full_name()
+            jogador = Jogador(nome=nome_usuario, tempo='0', jogadas='0')
+            jogador.save()
             return redirect('index')
         else:
             return render(request, 'registration/login.html', {'error': 'Usuário ou senha inválidas'})
 
-    # jogo_listar = listar_jogos() # função para pegar a tabela e listar
     return render(request, 'registro/login.html')#, {'jogo_listar': jogo_listar})
 
 @login_required
