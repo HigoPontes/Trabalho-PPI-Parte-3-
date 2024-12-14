@@ -77,58 +77,5 @@
             Todos os direitos reservados ⓒ  <br>
             </h4>           
     </footer>
-    <script>
-        function checkMatch() {
-            const [card1, card2] = flippedCards;
-            const symbol1 = card1.querySelector(".card-front").innerText;
-            const symbol2 = card2.querySelector(".card-front").innerText;
-    
-            if (symbol1 === symbol2) {
-              matchedCards.push(card1, card2);
-              flippedCards = [];
-    
-              if (matchedCards.length === symbols.length * 2) {
-                clearInterval(timerInterval);
-                setTimeout(() => {
-                  alert(
-                    `Parabéns! Você ganhou em ${attempts} tentativas e ${formatTime(time)}!`
-                  );
-    
-                  const formData = new FormData();
-                  formData.append("tentativas", attempts);
-                  formData.append("tempo", time);
-    
-                  fetch("{% url 'jogoSave' %}", {
-                    method: "POST",
-                    body: formData,
-                    headers: {
-                      "X-CSRFToken": "{{ csrf_token }}",
-                    },
-                  })
-                  .then((response) => {
-                    if (!response.ok) {
-                      throw new Error(`Erro: ${response.statusText}`); 
-                    }
-                    return response.json(); 
-                  })
-                  .then((data) => {
-                    if (data.status === "success") {
-                      console.log(data.message);
-                      window.location.href = "{% url 'ranking' %}";
-                    } else {
-                      console.error(data.message);
-                      alert(`Erro: ${data.message}`);
-                    }
-                  })
-                  .catch((error) => console.error("Erro ao salvar o jogo:", error));              
-                }, 500);
-              }
-            } else {
-              flippedCards.forEach((card) => card.classList.remove("flipped"));
-              flippedCards = [];
-            }
-          }
-    
-    </script>
 </body>
 </html>
